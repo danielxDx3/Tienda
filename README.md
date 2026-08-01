@@ -14,6 +14,7 @@ El catálogo funciona como un árbol. En la parte superior se encuentra la categ
 Cada categoría puede contener otras subcategorías y también productos. Por ejemplo, la categoría **Electrónica** contiene las subcategorías **Teléfonos**, **Computadoras** y **Accesorios**.
 
 ## Funcionamiento del programa
+
 Al ejecutar el programa se crea automáticamente el catálogo con todas sus categorías, subcategorías y productos.
 
 Después aparece un menú con las siguientes opciones:
