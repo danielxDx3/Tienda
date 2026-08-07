@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tienda electrónica - catálogo web de productos" />
+  <meta name="author" content="Erick Daniel Moreno Garcia" />
+  <title>ElectroShop | Tienda electrónica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="#inicio" class="brand" aria-label="ElectroShop inicio">
+        <span class="brand-icon">⚡</span>
+        <span>Electro<span>Shop</span></span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Productos</a>
+        <a href="#categorias">Categorías</a>
+        <a href="#nosotros">Nosotros</a>
+      </nav>
+
+      <button class="cart-btn" id="cartButton" aria-label="Abrir carrito">
+        🛒 <span class="cart-label">Carrito</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">TECNOLOGÍA PARA TODOS</span>
+          <h1>Encuentra lo que necesitas en un solo lugar.</h1>
+          <p>Explora teléfonos, computadoras, accesorios, ropa y productos para el hogar con una experiencia moderna y sencilla.</p>
+          <div class="hero-actions">
+            <a href="#productos" class="btn btn-primary">Ver productos</a>
+            <a href="#categorias" class="btn btn-secondary">Explorar categorías</a>
+          </div>
+          <div class="hero-stats">
+            <div><strong id="statProducts">17</strong><span>Productos</span></div>
+            <div><strong>10</strong><span>Categorías</span></div>
+            <div><strong>100%</strong><span>Responsive</span></div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-card hero-card-main">
+            <span class="big-icon">💻</span>
+            <h3>Tecnología que conecta</h3>
+            <p>Catálogo completo y fácil de navegar.</p>
+          </div>
+          <div class="floating-card fc-1">📱 Smartphones</div>
+          <div class="floating-card fc-2">🎧 Accesorios</div>
+          <div class="floating-card fc-3">🏠 Hogar</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits">
+      <div class="container benefits-grid">
+        <article><span>🚚</span><div><strong>Entrega rápida</strong><small>Compra simple y organizada</small></div></article>
+        <article><span>🔒</span><div><strong>Compra segura</strong><small>Experiencia confiable</small></div></article>
+        <article><span>💬</span><div><strong>Atención directa</strong><small>Encuentra lo que buscas</small></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="categorias">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">EXPLORA</span>
+            <h2>Categorías principales</h2>
+          </div>
+          <p>Selecciona una categoría para filtrar el catálogo.</p>
+        </div>
+        <div class="category-grid" id="categoryCards"></div>
+      </div>
+    </section>
+
+    <section class="section products-section" id="productos">
+      <div class="container">
+        <div class="section-heading products-heading">
+          <div>
+            <span class="eyebrow">CATÁLOGO</span>
+            <h2>Nuestros productos</h2>
+          </div>
+          <p id="resultText">Mostrando todos los productos</p>
+        </div>
+
+        <div class="shop-layout">
+          <aside class="filters-panel">
+            <div class="filter-title-row">
+              <h3>Filtros</h3>
+              <button id="clearFilters" class="text-btn">Limpiar</button>
+            </div>
+
+            <label class="field-label" for="searchInput">Buscar producto</label>
+            <div class="search-box">
+              <span>⌕</span>
+              <input id="searchInput" type="search" placeholder="Ej. iPhone, laptop..." autocomplete="off" />
+            </div>
+
+            <div class="filter-block">
+              <span class="field-label">Categoría</span>
+              <div id="categoryFilters" class="filter-options"></div>
+            </div>
+
+            <div class="filter-block">
+              <label class="field-label" for="priceRange">Precio máximo: <strong id="priceValue">$1200</strong></label>
+              <input id="priceRange" type="range" min="20" max="1200" value="1200" step="10" />
+            </div>
+          </aside>
+
+          <div class="products-content">
+            <div class="toolbar">
+              <button class="mobile-filter-btn" id="mobileFilterBtn">☰ Filtros</button>
+              <div class="toolbar-spacer"></div>
+              <label for="sortSelect">Ordenar:</label>
+              <select id="sortSelect">
+                <option value="default">Recomendados</option>
+                <option value="price-asc">Precio: menor a mayor</option>
+                <option value="price-desc">Precio: mayor a menor</option>
+                <option value="name-asc">Nombre A-Z</option>
+              </select>
+            </div>
+
+            <div class="product-grid" id="productGrid"></div>
+            <div class="empty-state hidden" id="emptyState">
+              <span>🔎</span>
+              <h3>No encontramos productos</h3>
+              <p>Prueba con otra búsqueda o limpia los filtros.</p>
+              <button class="btn btn-primary" id="emptyClearBtn">Limpiar filtros</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="nosotros">
+      <div class="container about-grid">
+        <div>
+          <span class="eyebrow">PROYECTO ACADÉMICO</span>
+          <h2>De un catálogo Java a una experiencia web.</h2>
+          <p>Esta versión integra el catálogo desarrollado en Java con una interfaz visual creada en HTML, CSS y JavaScript. Los productos mostrados en la página se obtienen directamente del servidor Java.</p>
+        </div>
+        <div class="about-card">
+          <div><span>HTML</span><strong>Estructura</strong></div>
+          <div><span>CSS</span><strong>Diseño</strong></div>
+          <div><span>JAVA</span><strong>Servidor y catálogo</strong></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="brand footer-brand"><span class="brand-icon">⚡</span><span>Electro<span>Shop</span></span></div>
+      <p>Proyecto de Tienda Electrónica · Erick Daniel Moreno Garcia</p>
+      <p>© <span id="year"></span> Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-header">
+      <div><span class="eyebrow">TU COMPRA</span><h2>Carrito</h2></div>
+      <button class="icon-btn" id="closeCart" aria-label="Cerrar carrito">×</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-empty" id="cartEmpty">
+      <span>🛒</span>
+      <h3>Tu carrito está vacío</h3>
+      <p>Agrega productos para verlos aquí.</p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total"><span>Total</span><strong id="cartTotal">$0.00</strong></div>
+      <button class="btn btn-primary btn-full" id="checkoutBtn">Finalizar compra</button>
+      <button class="text-btn danger" id="clearCart">Vaciar carrito</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast">Producto agregado al carrito</div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

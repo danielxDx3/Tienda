@@ -290,7 +290,7 @@ public class Main {
         }
     }
 
-    private static Categoria crearCatalogo() {
+    public static Categoria crearCatalogo() {
 
         Categoria catalogo =
                 new Categoria(
